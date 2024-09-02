@@ -22,6 +22,7 @@ from mergekit.merge_methods.generalized_task_arithmetic import (
 from mergekit.merge_methods.linear import LinearMerge
 from mergekit.merge_methods.model_stock import ModelStockMerge
 from mergekit.merge_methods.passthrough import PassthroughMerge
+from mergekit.merge_methods.uncertainty_gradient_mismatch import UncertaintyGradientMismatch
 from mergekit.merge_methods.slerp import SlerpMerge
 from mergekit.merge_methods.tokenizer_permute import TokenizerPermutationMerge
 
@@ -93,6 +94,8 @@ def get(method: str) -> MergeMethod:
             default_normalize=False,
             default_rescale=True,
         )
+    elif method == "uncertainty_gradient_mismatch":
+        return UncertaintyGradientMismatch()
     raise RuntimeError(f"Unimplemented merge method {method}")
 
 
@@ -104,4 +107,5 @@ __all__ = [
     "PassthroughMerge",
     "GeneralizedTaskArithmeticMerge",
     "TokenizerPermutationMerge",
+    "UncertaintyGradientMismatch",
 ]
