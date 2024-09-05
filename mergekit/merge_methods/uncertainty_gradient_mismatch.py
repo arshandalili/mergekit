@@ -41,7 +41,6 @@ class UncertaintyGradientMismatchTask(Task[torch.Tensor]):
 
         ft_models_tensors = list(tensors.values())[1:len_models]
         base_hessian_tensor = list(tensors.values())[len_models]
-        base_hessian_tensor = torch.ones_like(base_hessian_tensor)  # TODO
         ft_hessians_tensors = list(tensors.values())[len_models + 1 :]
 
         delta_0 = [v["delta_0"] for v in self.tensor_parameters.values()][0]
@@ -57,7 +56,7 @@ class UncertaintyGradientMismatchTask(Task[torch.Tensor]):
 
         return self.merging(
             base_model_tensor=base_model_tensor,
-            base_hessian_tensor=base_hessian_tensor,  # TODO
+            base_hessian_tensor=base_hessian_tensor,
             ft_models_tensors=ft_models_tensors,
             ft_hessians_tensors=ft_hessians_tensors,
             delta_0=delta_0,
@@ -79,7 +78,7 @@ class UncertaintyGradientMismatchTask(Task[torch.Tensor]):
         else:
             merged_model_tensor = torch.zeros_like(ft_models_tensors[0])
             base_model_tensor = merged_model_tensor
-            
+
         with torch.no_grad():
             if not self.skip_tensor(merged_model_tensor, use_tensor_name=True):
                 # common part of preconditioner: \bar{H}^{-1}
