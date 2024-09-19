@@ -1,0 +1,25 @@
+models:
+  - model: arshandalili/roberta-ft-imdb
+    parameters:
+      alpha_t: 1.0
+  - model: arshandalili/roberta-ft-imdb-amazon
+    parameters:
+      alpha_t: 1.0
+  - model: arshandalili/roberta-ft-imdb-rotten_tomatoes
+    parameters:
+      alpha_t: 1.0
+  - model: arshandalili/roberta-ft-imdb-sst2
+    parameters:
+      alpha_t: 1.0
+  - model: arshandalili/roberta-ft-imdb-yelp
+    parameters:
+      alpha_t: 1.0
+  - model: arshandalili/roberta-ft-imdb-fisher-sum
+  - model: arshandalili/roberta-ft-amazon-fisher-sum
+  - model: arshandalili/roberta-ft-rotten_tomatoes-fisher-sum
+  - model: arshandalili/roberta-ft-sst2-fisher-sum
+  - model: arshandalili/roberta-ft-yelp-fisher-sum
+
+
+merge_method: uncertainty_gradient_mismatch
+dtype: float32
